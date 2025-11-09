@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import JobSearch from "./components/JobSearch";
+import Showcase from "./components/Showcase";
 import HowItWorks from "./components/HowItWorks";
 import Footer from "./components/Footer";
 
@@ -10,6 +11,7 @@ function App() {
       <Navbar />
       <Hero />
       <JobSearch />
+      <Showcase />
       <HowItWorks />
       <Footer />
     </div>
