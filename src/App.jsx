@@ -1,8 +1,9 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import JobSearch from "./components/JobSearch";
+import InteractiveCards from "./components/InteractiveCards";
+import ParallaxShowcase from "./components/ParallaxShowcase";
 import Showcase from "./components/Showcase";
-import HowItWorks from "./components/HowItWorks";
+import CompanyInfo from "./components/CompanyInfo";
 import Footer from "./components/Footer";
 
 function App() {
@@ -10,9 +11,10 @@ function App() {
     <div className="min-h-screen bg-white text-slate-900">
       <Navbar />
       <Hero />
-      <JobSearch />
+      <InteractiveCards />
+      <ParallaxShowcase />
       <Showcase />
-      <HowItWorks />
+      <CompanyInfo />
       <Footer />
     </div>
   );
