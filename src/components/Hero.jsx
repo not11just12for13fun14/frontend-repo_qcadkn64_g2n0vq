@@ -1,71 +1,78 @@
-import { motion } from "framer-motion";
-import Spline from "@splinetool/react-spline";
+import React from 'react';
+import Spline from '@splinetool/react-spline';
+import { motion } from 'framer-motion';
+import { Download } from 'lucide-react';
 
-export default function Hero() {
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
-  const downloadHref = backendUrl ? `${backendUrl}/download/project-zip` : undefined;
+const Hero = () => {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || '';
+  const downloadHref = backendUrl ? `${backendUrl.replace(/\/$/, '')}/download/project-zip` : '';
 
   return (
-    <section className="relative overflow-hidden">
-      <div className="relative h-[560px] sm:h-[680px] md:h-[760px]">
-        {/* Full-width cover background with Spline */}
-        <Spline scene="https://prod.spline.design/kqB-rdL4TCJ7pyGb/scene.splinecode" style={{ width: '100%', height: '100%' }} />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/50 via-white/20 to-white/90" />
+    <section className="relative" id="cta">
+      <div className="h-[72vh] md:h-[80vh] relative">
+        <div className="absolute inset-0">
+          <Spline
+            scene="https://prod.spline.design/4xYkH2c7s8h2Iy8k/scene.splinecode"
+            style={{ width: '100%', height: '100%' }}
+          />
+        </div>
 
-        {/* Centered animated headline */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center px-6 max-w-3xl"
-          >
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/60 to-slate-950 pointer-events-none" />
+
+        <div className="relative z-10 h-full flex items-center">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10">
             <motion.div
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 backdrop-blur border border-white/60 text-xs font-medium text-slate-700 mb-5"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              Dynamic, illustrated hiring experiences
-            </motion.div>
-            <motion.h1
-              className="font-extrabold tracking-tight text-4xl sm:text-5xl md:text-6xl text-slate-900"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.35, duration: 0.8 }}
-            >
-              Attract top talent with fluid visuals and a modern workflow
-            </motion.h1>
-            <motion.p
-              className="mt-4 text-slate-700 text-base sm:text-lg"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.7 }}
-            >
-              A full-width animated background sets the tone—sleek, vibrant, and engaging—while you recruit with clarity.
-            </motion.p>
-            <motion.div
-              className="mt-8 flex flex-col sm:flex-row gap-3 justify-center"
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.85, duration: 0.6 }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6"
             >
-              <button className="px-5 py-3 rounded-lg bg-slate-900 text-white hover:bg-slate-800">Explore Jobs</button>
-              <button className="px-5 py-3 rounded-lg border border-slate-300 bg-white/80 backdrop-blur hover:bg-white">Start Hiring</button>
-              {downloadHref && (
-                <a
-                  href={downloadHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-3 rounded-lg border border-slate-300 bg-white/80 backdrop-blur hover:bg-white text-slate-800"
-                >
-                  Download Project ZIP
-                </a>
-              )}
+              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
+                Hire talent with style.
+              </h1>
+              <p className="text-slate-300 max-w-xl">
+                A modern, animated hiring experience powered by React, Tailwind, Spline 3D, and a FastAPI backend.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-3">
+                {downloadHref ? (
+                  <a
+                    href={downloadHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-md bg-cyan-500 hover:bg-cyan-400 px-4 py-2 font-semibold text-slate-900 shadow-lg shadow-cyan-500/20"
+                  >
+                    <Download className="h-5 w-5" /> Download Project ZIP
+                  </a>
+                ) : (
+                  <span className="inline-flex items-center gap-2 rounded-md bg-white/10 px-4 py-2 text-white/70">
+                    <Download className="h-5 w-5" /> Set VITE_BACKEND_URL to enable download
+                  </span>
+                )}
+              </div>
             </motion.div>
-          </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="hidden md:block"
+            >
+              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6">
+                <h3 className="text-lg font-semibold mb-2">What you get</h3>
+                <ul className="list-disc list-inside text-slate-300 space-y-1">
+                  <li>Responsive React UI with Tailwind</li>
+                  <li>3D Spline hero with smooth animations</li>
+                  <li>FastAPI backend with ZIP download endpoint</li>
+                  <li>Clean component structure ready to extend</li>
+                </ul>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default Hero;
