@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import Spline from "@splinetool/react-spline";
 
 export default function Hero() {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const downloadHref = backendUrl ? `${backendUrl}/download/project-zip` : undefined;
+
   return (
     <section className="relative overflow-hidden">
       <div className="relative h-[560px] sm:h-[680px] md:h-[760px]">
@@ -49,6 +52,16 @@ export default function Hero() {
             >
               <button className="px-5 py-3 rounded-lg bg-slate-900 text-white hover:bg-slate-800">Explore Jobs</button>
               <button className="px-5 py-3 rounded-lg border border-slate-300 bg-white/80 backdrop-blur hover:bg-white">Start Hiring</button>
+              {downloadHref && (
+                <a
+                  href={downloadHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-3 rounded-lg border border-slate-300 bg-white/80 backdrop-blur hover:bg-white text-slate-800"
+                >
+                  Download Project ZIP
+                </a>
+              )}
             </motion.div>
           </motion.div>
         </div>
