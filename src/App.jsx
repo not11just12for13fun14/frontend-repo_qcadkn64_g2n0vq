@@ -1,10 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import InteractiveCards from "./components/InteractiveCards";
-import ParallaxShowcase from "./components/ParallaxShowcase";
-import Showcase from "./components/Showcase";
 import CompanyInfo from "./components/CompanyInfo";
-import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -12,10 +9,7 @@ function App() {
       <Navbar />
       <Hero />
       <InteractiveCards />
-      <ParallaxShowcase />
-      <Showcase />
       <CompanyInfo />
-      <Footer />
     </div>
   );
 }
